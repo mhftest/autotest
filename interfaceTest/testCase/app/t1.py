@@ -1,0 +1,20 @@
+# import base64
+# from random import Random
+#
+# import RSA as RSA
+#
+# message = b"this is test"
+#
+# rsa_private_key = b'-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAz4C8rDjl6NAAvdUxLl7p8eA+xxc4Sa20puq2gFPk+8B5W30o+8xAaktLoji9wEsf7WTEllxZcIXw7d4K9b1M34ZDQT1iR4ZreB3GkxEXDeQIV3f/W7C3NL1bF5ePn7DRGZYKTEry8pp/lK/1ESP9Z+giaN29xm+jsmvNAOJlLjndn8nYcmA1sdDzuX8JSlZOiijAwyKUkwrBd+FqlhbAfF9ebcEgQcRISZsBMpcsZ66HQ0nvEnhmLzkfXxLUu2w7ccwLc/W7a4V1SNFEMZifRyiI7IhYYpRFw7egQN2RgzVWW/O6HKzk2Mxaz/6Y+HEehuDfRDn5MjMCkhnfbpRKKwIDAQABAoIBAD7xpkn32IYO0qrDCPAwCnc8ts5d1M1EzA/2EvZKfKOBd06xYMVA6ClWPdMvsx+pqj2w25Fg4iCoALWnLVvt2GvVpoEbxbw8ok0Fez8RaBTmn0EpPWTq7igpaIB3kTG3yTYhtW3/LkM5aooH9icE69GhMQ7udKrFIrr0yHMEOf0TNKBUNlwwHWJrpUuodXxIbERonkNdri1AnsWsnh4ePkKFlgaIdOZ24W4kHjfQAQkz3bPTjRzU5Q0LpkCpuYxk+TeOvR5tNPHXtzTWYek7JbCbnIKr1SiJx+ncwWM7QEnuvbzCU2VeTwb6Rq94WIg3RpfqSKJPr5w5e/df4jmi58ECgYEA74ty4UiChdp27/xvy2sJMilgkcL5Z0A+McPrjM82CqfPvr1+ZMBkTwuQGxFWlNtdE7DLpneVCWmzAexUJ02dFndSJMqsN81335VYfLc94qk5HXwmc9UBK7+qL2Ugyz76KoRGogqkKYw0ZR2kdpcNoXjQfeVgqrumt+jnZChpAl8CgYEA3cHPuDbdqqhcslz4+Zz8B0zWKN8Kj5CgG9ReEmJGpE6w5D7bds5iPcmp5xwFctuumAtroA/+bpGX/2oXc1nXucf/dI3AWoaBQrZ9iL6xfe7+ZPiRYuZjz3ygZ+Vcgp6xixbTT86jaIHwsD1wYtzOiiYOUBt4jDk89xookjpBg7UCgYEAtCriQOdUpHBoPKBVRV5AEGZmp7tJ8oqzPKLrK4E+WE1XR1MnGYhK6dj8jh9AS72iCAlVYuNWSToi1TN3KAiMOjWMpvd5CI+VtaiSYVtBRJWay75w/XYb51fFHNinDbdUWV4b8gym5Ej7r4HYDQoXyncf+VDooAF7p5+ZSg/Ky2kCgYAlVsv+Dab3ZE/vbH4zsX4yUHrC+QNTNxvuc6y/VbLlWaapV/gmIgwisUEde/di5qCYU1v04JyLy5IXXKrELn2Hd6iI3JFl7L35GLc8fjdup/5HzB7W00o9FpP/ynvwNn5YmChOiNG0+CQp2L6CtwFD+7JvRKDgo4ajaNEqBgsf/QKBgE6kbfW6FSpFdOs+2qpIXTEWnTqUC3WD1h1qB8G8J3Tn/o/bSm8C5lHmjmg9vRJtHisaoLyc2ikH7UZwPGU32340s22igkDZml730CKrYtnnBZAG+tIiERtI4Zj432X7qzBYgTgwO7wRAvds+WDCwwV5FMGNCzbPEXos8HmS0812\n-----END RSA PRIVATE KEY-----\n'
+#
+# rsa_public_key = b'-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz4C8rDjl6NAAvdUxLl7p8eA+xxc4Sa20puq2gFPk+8B5W30o+8xAaktLoji9wEsf7WTEllxZcIXw7d4K9b1M34ZDQT1iR4ZreB3GkxEXDeQIV3f/W7C3NL1bF5ePn7DRGZYKTEry8pp/lK/1ESP9Z+giaN29xm+jsmvNAOJlLjndn8nYcmA1sdDzuX8JSlZOiijAwyKUkwrBd+FqlhbAfF9ebcEgQcRISZsBMpcsZ66HQ0nvEnhmLzkfXxLUu2w7ccwLc/W7a4V1SNFEMZifRyiI7IhYYpRFw7egQN2RgzVWW/O6HKzk2Mxaz/6Y+HEehuDfRDn5MjMCkhnfbpRKKwIDAQAB\n-----END PUBLIC KEY-----\n'
+#
+# rsakey = RSA.importKey(rsa_public_key)
+# cipher = Cipher_pkcs1_v1_5.new(rsakey)
+# cipher_text = base64.b64encode(cipher.encrypt(message))
+# print(cipher_text)
+# rsakey = RSA.importKey(rsa_private_key)
+# cipher = Cipher_pkcs1_v1_5.new(rsakey)
+# random_generator = Random.new().read
+# text = cipher.decrypt(base64.b64decode(cipher_text), None)
+# print(text.decode('utf8'))

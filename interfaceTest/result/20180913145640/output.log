@@ -1,0 +1,3 @@
+2018-09-13 14:56:40,851 - root - INFO - ********TEST START********
+2018-09-13 14:56:45,306 - root - INFO - *********TEST END*********
+2018-09-13 14:56:45,310 - root - INFO - Doesn't send report email to developer.

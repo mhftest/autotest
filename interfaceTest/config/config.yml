@@ -1,0 +1,17 @@
+URL: http://192.168.1.249:8984  #金服重构
+#URL: http://192.168.1.249:9921/hkjfapp   #jf测试
+#URL: https://www.hongkunjinfu.com/hkjfapp  #金服压测 线上
+HOST: 192.168.1.250
+PORT: 3306
+user: dev_db_user
+password: yrSuper001
+db: finance_hkjf
+charset: 'utf8mb4'
+#log:
+#    file_name: test.log
+#    backup: 5
+#    console_level: WARNING
+#    file_level: DEBUG
+#    pattern: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+

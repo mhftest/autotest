@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<page>
+    <database name="p2p_product_hotcopy">
+        <table name="loginuser">
+            <sql id="select_member">
+                SELECT * from loginuser where tel=%s
+            </sql>
+        </table>
+
+        <table name="loginuser">
+            <sql id="delete_user">
+                DELETE FROM rs_member WHERE email=%s
+            </sql>
+        </table>
+    </database>
+</page>

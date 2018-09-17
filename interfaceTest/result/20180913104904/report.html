@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>金服重构Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 800px;
+
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+    text-align:center;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>金服重构Test Report</h1>
+<p class='attribute'><strong>Start Time:</strong> 2018-09-13 10:49:04</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:04.045231</p>
+<p class='attribute'><strong>Status:</strong> Pass 10</p>
+
+<p class='description'>Test Description</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td colspan='2'>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>paramunittest.PcLoginTest_0</td>
+    <td>pclogin用户名密码正确</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td colspan='2' class='none'><div class='testcase'>test_login: pclogin用户名密码正确</div></td>
+    <td colspan='7' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: status: 200
+&lt;ResponseEntity&gt;&lt;resStatus&gt;1000&lt;/resStatus&gt;&lt;resMsg/&gt;&lt;params&gt;&lt;finAccount&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id/&gt;&lt;regUserId/&gt;&lt;userName/&gt;&lt;accountType/&gt;&lt;passwd/&gt;&lt;nowMoney&gt;100680483.33&lt;/nowMoney&gt;&lt;freezeMoney&gt;1053615.15&lt;/freezeMoney&gt;&lt;useableMoney&gt;99626868.18&lt;/useableMoney&gt;&lt;state/&gt;&lt;createTime/&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime/&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;useableMoneyStart/&gt;&lt;useableMoneyEnd/&gt;&lt;beforeNowMoney/&gt;&lt;totalAmount&gt;102046135.13&lt;/totalAmount&gt;&lt;/finAccount&gt;&lt;lastLoginTime&gt;1536806887000&lt;/lastLoginTime&gt;&lt;showProducts&gt;0&lt;/showProducts&gt;&lt;accInvest&gt;1&lt;/accInvest&gt;&lt;regUser&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;1140&lt;/id&gt;&lt;code&gt;&lt;/code&gt;&lt;login&gt;15510000011&lt;/login&gt;&lt;nickName&gt;鸿坤金服&lt;/nickName&gt;&lt;passwd&gt;******&lt;/passwd&gt;&lt;identify&gt;1&lt;/identify&gt;&lt;type&gt;1&lt;/type&gt;&lt;headPortrait&gt;head_portrait/default_portrait.jpg&lt;/headPortrait&gt;&lt;lastLoginTime&gt;1536806940551&lt;/lastLoginTime&gt;&lt;lastLoginTimeBegin/&gt;&lt;lastLoginTimeEnd/&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1533092315000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533092719000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;vipFlag&gt;1&lt;/vipFlag&gt;&lt;userIds/&gt;&lt;/regUser&gt;&lt;/params&gt;&lt;/ResponseEntity&gt;
+1000
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>paramunittest.SearchInfomation_Test_0</td>
+    <td>searchInfomation</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',1)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td colspan='2' class='none'><div class='testcase'>test_login: searchInfomation</div></td>
+    <td colspan='7' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: status: 200
+&lt;ResponseEntity&gt;&lt;resStatus&gt;1000&lt;/resStatus&gt;&lt;resMsg&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;74&lt;/id&gt;&lt;title&gt;和讯网&lt;/title&gt;&lt;type&gt;4&lt;/type&gt;&lt;source&gt;&lt;/source&gt;&lt;channel&gt;1,2,3,4&lt;/channel&gt;&lt;position&gt;0&lt;/position&gt;&lt;content&gt;&amp;lt;span&gt;&amp;lt;/span&gt;&lt;/content&gt;&lt;url&gt;http://iof.hexun.com/&lt;/url&gt;&lt;keyword&gt;&lt;/keyword&gt;&lt;resideSelect&gt;1&lt;/resideSelect&gt;&lt;sort&gt;1&lt;/sort&gt;&lt;eulogizeNum&gt;0&lt;/eulogizeNum&gt;&lt;browseNum&gt;0&lt;/browseNum&gt;&lt;state&gt;2&lt;/state&gt;&lt;createTime&gt;1533538613000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533538617000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;icon/&gt;&lt;imgUrl&gt;&lt;/imgUrl&gt;&lt;/resMsg&gt;&lt;resMsg&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;75&lt;/id&gt;&lt;title&gt;金融界&lt;/title&gt;&lt;type&gt;4&lt;/type&gt;&lt;source&gt;&lt;/source&gt;&lt;channel&gt;1&lt;/channel&gt;&lt;position&gt;0&lt;/position&gt;&lt;content&gt;&amp;lt;span&gt;&amp;lt;/span&gt;&lt;/content&gt;&lt;url&gt;http://fund.jrj.com.cn/&lt;/url&gt;&lt;keyword&gt;&lt;/keyword&gt;&lt;resideSelect&gt;1&lt;/resideSelect&gt;&lt;sort&gt;2&lt;/sort&gt;&lt;eulogizeNum&gt;0&lt;/eulogizeNum&gt;&lt;browseNum&gt;0&lt;/browseNum&gt;&lt;state&gt;2&lt;/state&gt;&lt;createTime&gt;1533538661000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533538706000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;icon/&gt;&lt;imgUrl&gt;&lt;/imgUrl&gt;&lt;/resMsg&gt;&lt;resMsg&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;76&lt;/id&gt;&lt;title&gt;全景理财&lt;/title&gt;&lt;type&gt;4&lt;/type&gt;&lt;source&gt;&lt;/source&gt;&lt;channel&gt;1,2,3,4&lt;/channel&gt;&lt;position&gt;0&lt;/position&gt;&lt;content&gt;&amp;lt;span&gt;&amp;lt;/span&gt;&lt;/content&gt;&lt;url&gt;http://www.p5w.net/money/&lt;/url&gt;&lt;keyword&gt;&lt;/keyword&gt;&lt;resideSelect&gt;1&lt;/resideSelect&gt;&lt;sort&gt;3&lt;/sort&gt;&lt;eulogizeNum&gt;0&lt;/eulogizeNum&gt;&lt;browseNum&gt;0&lt;/browseNum&gt;&lt;state&gt;2&lt;/state&gt;&lt;createTime&gt;1533538739000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533538746000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;icon/&gt;&lt;imgUrl&gt;&lt;/imgUrl&gt;&lt;/resMsg&gt;&lt;resMsg&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;77&lt;/id&gt;&lt;title&gt;证券之星&lt;/title&gt;&lt;type&gt;4&lt;/type&gt;&lt;source&gt;&lt;/source&gt;&lt;channel&gt;1,2,3,4&lt;/channel&gt;&lt;position&gt;0&lt;/position&gt;&lt;content&gt;&amp;lt;span&gt;&amp;lt;/span&gt;&lt;/content&gt;&lt;url&gt;http://www.stockstar.com/&lt;/url&gt;&lt;keyword&gt;&lt;/keyword&gt;&lt;resideSelect&gt;1&lt;/resideSelect&gt;&lt;sort&gt;4&lt;/sort&gt;&lt;eulogizeNum&gt;0&lt;/eulogizeNum&gt;&lt;browseNum&gt;0&lt;/browseNum&gt;&lt;state&gt;2&lt;/state&gt;&lt;createTime&gt;1533538782000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533538789000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;icon/&gt;&lt;imgUrl&gt;&lt;/imgUrl&gt;&lt;/resMsg&gt;&lt;resMsg&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;78&lt;/id&gt;&lt;title&gt;CCTV证券咨询节目部&lt;/title&gt;&lt;type&gt;4&lt;/type&gt;&lt;source&gt;&lt;/source&gt;&lt;channel&gt;1,2,3,4&lt;/channel&gt;&lt;position&gt;0&lt;/position&gt;&lt;content&gt;&amp;lt;span&gt;&amp;lt;/span&gt;&lt;/content&gt;&lt;url&gt;http://cctvjj.cctvzxjy.com/&lt;/url&gt;&lt;keyword&gt;&lt;/keyword&gt;&lt;resideSelect&gt;1&lt;/resideSelect&gt;&lt;sort&gt;5&lt;/sort&gt;&lt;eulogizeNum&gt;0&lt;/eulogizeNum&gt;&lt;browseNum&gt;0&lt;/browseNum&gt;&lt;state&gt;2&lt;/state&gt;&lt;createTime&gt;1533538845000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533538854000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;icon/&gt;&lt;imgUrl&gt;&lt;/imgUrl&gt;&lt;/resMsg&gt;&lt;resMsg&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;79&lt;/id&gt;&lt;title&gt;投资界&lt;/title&gt;&lt;type&gt;4&lt;/type&gt;&lt;source&gt;&lt;/source&gt;&lt;channel&gt;1,2,3,4&lt;/channel&gt;&lt;position&gt;0&lt;/position&gt;&lt;content&gt;&amp;lt;span&gt;&amp;lt;/span&gt;&lt;/content&gt;&lt;url&gt;http://if.pedaily.cn/&lt;/url&gt;&lt;keyword&gt;&lt;/keyword&gt;&lt;resideSelect&gt;1&lt;/resideSelect&gt;&lt;sort&gt;6&lt;/sort&gt;&lt;eulogizeNum&gt;0&lt;/eulogizeNum&gt;&lt;browseNum&gt;0&lt;/browseNum&gt;&lt;state&gt;2&lt;/state&gt;&lt;createTime&gt;1533538893000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533538899000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;icon/&gt;&lt;imgUrl&gt;&lt;/imgUrl&gt;&lt;/resMsg&gt;&lt;resMsg&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;80&lt;/id&gt;&lt;title&gt;内蒙古金融网&lt;/title&gt;&lt;type&gt;4&lt;/type&gt;&lt;source&gt;&lt;/source&gt;&lt;channel&gt;1,2,3,4&lt;/channel&gt;&lt;position&gt;0&lt;/position&gt;&lt;content&gt;&amp;lt;span&gt;&amp;lt;/span&gt;&lt;/content&gt;&lt;url&gt;http://www.nmgjrw.com/&lt;/url&gt;&lt;keyword&gt;&lt;/keyword&gt;&lt;resideSelect&gt;1&lt;/resideSelect&gt;&lt;sort&gt;7&lt;/sort&gt;&lt;eulogizeNum&gt;0&lt;/eulogizeNum&gt;&lt;browseNum&gt;0&lt;/browseNum&gt;&lt;state&gt;2&lt;/state&gt;&lt;createTime&gt;1533538931000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533538936000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;icon/&gt;&lt;imgUrl&gt;&lt;/imgUrl&gt;&lt;/resMsg&gt;&lt;resMsg&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;81&lt;/id&gt;&lt;title&gt;网贷之家&lt;/title&gt;&lt;type&gt;4&lt;/type&gt;&lt;source&gt;&lt;/source&gt;&lt;channel&gt;1,2,3,4&lt;/channel&gt;&lt;position&gt;0&lt;/position&gt;&lt;content&gt;&amp;lt;span&gt;&amp;lt;/span&gt;&lt;/content&gt;&lt;url&gt;https://www.wdzj.com/&lt;/url&gt;&lt;keyword&gt;&lt;/keyword&gt;&lt;resideSelect&gt;1&lt;/resideSelect&gt;&lt;sort&gt;8&lt;/sort&gt;&lt;eulogizeNum&gt;0&lt;/eulogizeNum&gt;&lt;browseNum&gt;0&lt;/browseNum&gt;&lt;state&gt;2&lt;/state&gt;&lt;createTime&gt;1533538968000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533538973000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;icon/&gt;&lt;imgUrl&gt;&lt;/imgUrl&gt;&lt;/resMsg&gt;&lt;resMsg&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;82&lt;/id&gt;&lt;title&gt;网贷315&lt;/title&gt;&lt;type&gt;4&lt;/type&gt;&lt;source&gt;&lt;/source&gt;&lt;channel&gt;1,2,3,4&lt;/channel&gt;&lt;position&gt;0&lt;/position&gt;&lt;content&gt;&amp;lt;span&gt;&amp;lt;/span&gt;&lt;/content&gt;&lt;url&gt;http://www.wd315.cn/&lt;/url&gt;&lt;keyword&gt;&lt;/keyword&gt;&lt;resideSelect&gt;1&lt;/resideSelect&gt;&lt;sort&gt;9&lt;/sort&gt;&lt;eulogizeNum&gt;0&lt;/eulogizeNum&gt;&lt;browseNum&gt;0&lt;/browseNum&gt;&lt;state&gt;2&lt;/state&gt;&lt;createTime&gt;1533538998000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533539003000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;icon/&gt;&lt;imgUrl&gt;&lt;/imgUrl&gt;&lt;/resMsg&gt;&lt;params/&gt;&lt;/ResponseEntity&gt;
+1000
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>paramunittest.ToRechargeTest_0</td>
+    <td>toRecharge</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td colspan='2' class='none'><div class='testcase'>test_login: toRecharge</div></td>
+    <td colspan='7' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: status: 200
+status: 200
+&lt;ResponseEntity&gt;&lt;resStatus&gt;1000&lt;/resStatus&gt;&lt;resMsg/&gt;&lt;params&gt;&lt;payChannelList&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;21&lt;/id&gt;&lt;sysName&gt;鸿坤金服&lt;/sysName&gt;&lt;sysNameCode&gt;HKJF&lt;/sysNameCode&gt;&lt;channelName&gt;宝付支付&lt;/channelName&gt;&lt;sort&gt;1000&lt;/sort&gt;&lt;channelNameCode&gt;4&lt;/channelNameCode&gt;&lt;payStyle&gt;10&lt;/payStyle&gt;&lt;platformSource&gt;10,11,12,13&lt;/platformSource&gt;&lt;state&gt;1&lt;/state&gt;&lt;/payChannelList&gt;&lt;baofuProtocol&gt;&lt;finBankReferMap&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;193&lt;/id&gt;&lt;bankCode&gt;ICBC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;工商银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;ICBC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;50000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;50000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/ICBC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497316993000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;194&lt;/id&gt;&lt;bankCode&gt;CCB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;建设银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;CCB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;50000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;100000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/CCB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317340000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;195&lt;/id&gt;&lt;bankCode&gt;BOC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;中国银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;BOC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;10000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;10000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/BOC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;196&lt;/id&gt;&lt;bankCode&gt;CEB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;光大银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;CEB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;10000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;10000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/CEB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;197&lt;/id&gt;&lt;bankCode&gt;CITIC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;中信银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;CITIC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;100000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;300000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/CITIC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;198&lt;/id&gt;&lt;bankCode&gt;CMBC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;民生银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;CMBC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;10000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;50000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/CMBC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;199&lt;/id&gt;&lt;bankCode&gt;GDB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;广发银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;GDB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;30000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;30000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/GDB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;200&lt;/id&gt;&lt;bankCode&gt;PAB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;平安银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;PAB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;50000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;50000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/PAB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;201&lt;/id&gt;&lt;bankCode&gt;ABC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;农业银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;ABC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;5000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;5000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/ABC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;202&lt;/id&gt;&lt;bankCode&gt;PSBC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;邮储银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;PSBC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;5000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;5000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/PSBC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;203&lt;/id&gt;&lt;bankCode&gt;SPDB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;浦发银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;SPDB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;20000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;20000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/SPDB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;204&lt;/id&gt;&lt;bankCode&gt;HXB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;华夏银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;HXB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;20000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;20000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/HXB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;205&lt;/id&gt;&lt;bankCode&gt;CIB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;兴业银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;CIB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;20000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;20000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/CIB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_WY&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;206&lt;/id&gt;&lt;bankCode&gt;SHB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;上海银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;SHB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;WY&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;100000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;400000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/SHB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1517370306000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799370000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_WY&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;151&lt;/id&gt;&lt;bankCode&gt;ICBC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;工商银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;ICBC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;50000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;50000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/ICBC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497316993000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;153&lt;/id&gt;&lt;bankCode&gt;CCB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;建设银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;CCB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;50000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;100000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/CCB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317340000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;155&lt;/id&gt;&lt;bankCode&gt;BOC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;中国银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;BOC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;10000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;10000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/BOC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;156&lt;/id&gt;&lt;bankCode&gt;CEB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;光大银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;CEB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;10000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;10000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/CEB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;157&lt;/id&gt;&lt;bankCode&gt;CITIC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;中信银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;CITIC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;100000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;300000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/CITIC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;158&lt;/id&gt;&lt;bankCode&gt;CMBC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;民生银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;CMBC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;10000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;50000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/CMBC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;159&lt;/id&gt;&lt;bankCode&gt;GDB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;广发银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;GDB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;30000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;30000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/GDB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;160&lt;/id&gt;&lt;bankCode&gt;PAB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;平安银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;PAB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;50000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;50000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/PAB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;161&lt;/id&gt;&lt;bankCode&gt;ABC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;农业银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;ABC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;5000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;5000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/ABC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;162&lt;/id&gt;&lt;bankCode&gt;PSBC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;邮储银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;PSBC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;5000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;5000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/PSBC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;163&lt;/id&gt;&lt;bankCode&gt;SPDB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;浦发银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;SPDB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;20000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;20000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/SPDB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;164&lt;/id&gt;&lt;bankCode&gt;HXB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;华夏银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;HXB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;20000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;20000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/HXB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;167&lt;/id&gt;&lt;bankCode&gt;CIB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;兴业银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;CIB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;20000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;20000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/CIB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;baofuProtocol_RZ&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;168&lt;/id&gt;&lt;bankCode&gt;SHB&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;上海银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;SHB&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;100000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;400000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/SHB.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1517370306000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_RZ&gt;&lt;/finBankReferMap&gt;&lt;payStyleMap&gt;&lt;baofuProtocol&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;20&lt;/id&gt;&lt;sysName&gt;鸿坤金服&lt;/sysName&gt;&lt;sysNameCode&gt;HKJF&lt;/sysNameCode&gt;&lt;platformName&gt;PC&lt;/platformName&gt;&lt;thirdName&gt;宝付&lt;/thirdName&gt;&lt;thirdNameCode&gt;baofuProtocol&lt;/thirdNameCode&gt;&lt;paywayName&gt;快捷支付&lt;/paywayName&gt;&lt;paywayCode&gt;RZ&lt;/paywayCode&gt;&lt;state&gt;1&lt;/state&gt;&lt;userType/&gt;&lt;createTime&gt;1533719797000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1536218634000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;/baofuProtocol&gt;&lt;baofuProtocol&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;22&lt;/id&gt;&lt;sysName&gt;鸿坤金服&lt;/sysName&gt;&lt;sysNameCode&gt;HKJF&lt;/sysNameCode&gt;&lt;platformName&gt;PC&lt;/platformName&gt;&lt;thirdName&gt;宝付&lt;/thirdName&gt;&lt;thirdNameCode&gt;baofuProtocol&lt;/thirdNameCode&gt;&lt;paywayName&gt;网银支付&lt;/paywayName&gt;&lt;paywayCode&gt;WY&lt;/paywayCode&gt;&lt;state&gt;1&lt;/state&gt;&lt;userType/&gt;&lt;createTime&gt;1533728077000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533728080000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;/baofuProtocol&gt;&lt;/payStyleMap&gt;&lt;/baofuProtocol&gt;&lt;bankMap&gt;&lt;bankCode&gt;ABC&lt;/bankCode&gt;&lt;tiedCardFlag&gt;2&lt;/tiedCardFlag&gt;&lt;baofuProtocol_bankRefer&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;161&lt;/id&gt;&lt;bankCode&gt;ABC&lt;/bankCode&gt;&lt;thirdName&gt;宝付协议&lt;/thirdName&gt;&lt;thirdCode&gt;baofuProtocol&lt;/thirdCode&gt;&lt;bankThirdName&gt;农业银行&lt;/bankThirdName&gt;&lt;bankThirdCode&gt;ABC&lt;/bankThirdCode&gt;&lt;paywayCodes&gt;RZ&lt;/paywayCodes&gt;&lt;regUserType&gt;1&lt;/regUserType&gt;&lt;singleLimit&gt;5000.00&lt;/singleLimit&gt;&lt;singleDayLimit&gt;5000.00&lt;/singleDayLimit&gt;&lt;singleMonthLimit&gt;0.00&lt;/singleMonthLimit&gt;&lt;bankIconAddress&gt;src/img/account/ABC.jpg&lt;/bankIconAddress&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1497317738000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533799348000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;groupColumns/&gt;&lt;/baofuProtocol_bankRefer&gt;&lt;entityNo&gt;&lt;1853a0e6c22527d378d90642556bf578&gt;6228********7812&lt;/1853a0e6c22527d378d90642556bf578&gt;&lt;/entityNo&gt;&lt;/bankMap&gt;&lt;basePath&gt;http://192.168.1.249:8984/hk-financial-services/&lt;/basePath&gt;&lt;/params&gt;&lt;/ResponseEntity&gt;
+1000
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>paramunittest.AccountRechargeTest_0</td>
+    <td>accountRecharge</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td colspan='2' class='none'><div class='testcase'>test_login: accountRecharge</div></td>
+    <td colspan='7' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: status: 200
+status: 200
+&lt;ResponseEntity&gt;&lt;resStatus&gt;1000&lt;/resStatus&gt;&lt;resMsg&gt;&lt;isProtocol&gt;1&lt;/isProtocol&gt;&lt;entityNo&gt;7812&lt;/entityNo&gt;&lt;bankId&gt;44&lt;/bankId&gt;&lt;bankCard&gt;6228481200290317812&lt;/bankCard&gt;&lt;idCard&gt;2208****2323&lt;/idCard&gt;&lt;isBind&gt;1&lt;/isBind&gt;&lt;bankTel&gt;15510000011&lt;/bankTel&gt;&lt;transDate&gt;2018-09-13 10:49:01&lt;/transDate&gt;&lt;transAmt&gt;0.01&lt;/transAmt&gt;&lt;bankIconAddress&gt;src/img/account/ABC.jpg&lt;/bankIconAddress&gt;&lt;/resMsg&gt;&lt;params/&gt;&lt;/ResponseEntity&gt;
+1000
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>paramunittest.ToWithDrawPageTest_0</td>
+    <td>toWithDrawPage</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',1)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td colspan='2' class='none'><div class='testcase'>test_login: toWithDrawPage</div></td>
+    <td colspan='7' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        pass</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.1: status: 200
+status: 200
+&lt;ResponseEntity&gt;&lt;resStatus&gt;1000&lt;/resStatus&gt;&lt;resMsg&gt;查询成功&lt;/resMsg&gt;&lt;params&gt;&lt;withdrawlsCoupons&gt;1&lt;/withdrawlsCoupons&gt;&lt;bindCardCount&gt;1&lt;/bindCardCount&gt;&lt;/params&gt;&lt;/ResponseEntity&gt;
+1000
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>paramunittest.ClientWithDrawTest_0</td>
+    <td>clientWithDraw</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',1)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td colspan='2' class='none'><div class='testcase'>test_login: clientWithDraw</div></td>
+    <td colspan='7' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        pass</a>
+
+    <div id='div_pt6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.1: status: 200
+status: 200
+&lt;ResponseEntity&gt;&lt;resStatus&gt;1000&lt;/resStatus&gt;&lt;resMsg&gt;提现成功&lt;/resMsg&gt;&lt;params/&gt;&lt;/ResponseEntity&gt;
+1000
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>paramunittest.loadMyAccountTest_0</td>
+    <td>loadMyAccount</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',1)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td colspan='2' class='none'><div class='testcase'>test_login: loadMyAccount</div></td>
+    <td colspan='7' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+        pass</a>
+
+    <div id='div_pt7.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.1: status: 200
+status: 200
+&lt;ResponseEntity&gt;&lt;resStatus&gt;0&lt;/resStatus&gt;&lt;resMsg/&gt;&lt;params&gt;&lt;regUserInfo&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;130&lt;/id&gt;&lt;regUserId&gt;1140&lt;/regUserId&gt;&lt;code&gt;&lt;/code&gt;&lt;sex&gt;0&lt;/sex&gt;&lt;age&gt;0&lt;/age&gt;&lt;birthday&gt;1533052800000&lt;/birthday&gt;&lt;birthdayBegin/&gt;&lt;birthdayEnd/&gt;&lt;marryState&gt;0&lt;/marryState&gt;&lt;degree&gt;0&lt;/degree&gt;&lt;workProvince&gt;&lt;/workProvince&gt;&lt;workCity&gt;&lt;/workCity&gt;&lt;workCountry&gt;&lt;/workCountry&gt;&lt;bothProvince&gt;&lt;/bothProvince&gt;&lt;bothCity&gt;&lt;/bothCity&gt;&lt;bothCountry&gt;&lt;/bothCountry&gt;&lt;contactAddress&gt;&lt;/contactAddress&gt;&lt;postCode&gt;&lt;/postCode&gt;&lt;job&gt;&lt;/job&gt;&lt;workIncome&gt;0&lt;/workIncome&gt;&lt;workIndustry&gt;&lt;/workIndustry&gt;&lt;assetcondition&gt;0&lt;/assetcondition&gt;&lt;email&gt;jingkq@126.com&lt;/email&gt;&lt;emailState&gt;0&lt;/emailState&gt;&lt;company&gt;&lt;/company&gt;&lt;companyTel&gt;&lt;/companyTel&gt;&lt;companyAddress&gt;&lt;/companyAddress&gt;&lt;photoUrl&gt;&lt;/photoUrl&gt;&lt;emergencyContact&gt;&lt;/emergencyContact&gt;&lt;emergencyTel&gt;&lt;/emergencyTel&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1533092315000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533092315000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;/regUserInfo&gt;&lt;finAccount&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id/&gt;&lt;regUserId/&gt;&lt;userName/&gt;&lt;accountType/&gt;&lt;passwd/&gt;&lt;nowMoney&gt;100680483.33&lt;/nowMoney&gt;&lt;freezeMoney&gt;1053616.16&lt;/freezeMoney&gt;&lt;useableMoney&gt;99626867.17&lt;/useableMoney&gt;&lt;state/&gt;&lt;createTime/&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime/&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;useableMoneyStart/&gt;&lt;useableMoneyEnd/&gt;&lt;beforeNowMoney/&gt;&lt;totalAmount&gt;102046135.13&lt;/totalAmount&gt;&lt;/finAccount&gt;&lt;growValue&gt;12062&lt;/growValue&gt;&lt;simSum&gt;0.00&lt;/simSum&gt;&lt;couponType0&gt;3&lt;/couponType0&gt;&lt;level&gt;1&lt;/level&gt;&lt;couponType1&gt;2&lt;/couponType1&gt;&lt;couponType2&gt;1&lt;/couponType2&gt;&lt;couponType3&gt;2&lt;/couponType3&gt;&lt;increaseAmount&gt;11.80&lt;/increaseAmount&gt;&lt;couponCount&gt;8&lt;/couponCount&gt;&lt;interestAmount&gt;105240.00&lt;/interestAmount&gt;&lt;regUser&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;1140&lt;/id&gt;&lt;code&gt;&lt;/code&gt;&lt;login&gt;15510000011&lt;/login&gt;&lt;nickName&gt;鸿坤金服&lt;/nickName&gt;&lt;passwd/&gt;&lt;identify&gt;1&lt;/identify&gt;&lt;type&gt;1&lt;/type&gt;&lt;headPortrait&gt;head_portrait/default_portrait.jpg&lt;/headPortrait&gt;&lt;lastLoginTime&gt;1536806943000&lt;/lastLoginTime&gt;&lt;lastLoginTimeBegin/&gt;&lt;lastLoginTimeEnd/&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1533092315000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533092719000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;vipFlag&gt;1&lt;/vipFlag&gt;&lt;userIds/&gt;&lt;/regUser&gt;&lt;scurityLevel&gt;80&lt;/scurityLevel&gt;&lt;qdzMoney&gt;0&lt;/qdzMoney&gt;&lt;regUserDetail&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;120&lt;/id&gt;&lt;regUserId&gt;1140&lt;/regUserId&gt;&lt;code&gt;&lt;/code&gt;&lt;realName&gt;赵海燕&lt;/realName&gt;&lt;idCard&gt;220882197810072323&lt;/idCard&gt;&lt;inviteNo&gt;10000011&lt;/inviteNo&gt;&lt;commendNo&gt;&lt;/commendNo&gt;&lt;extenSource&gt;&lt;/extenSource&gt;&lt;registSource&gt;31&lt;/registSource&gt;&lt;groupCode&gt;&lt;/groupCode&gt;&lt;detailState&gt;0&lt;/detailState&gt;&lt;creditLevel&gt;&lt;/creditLevel&gt;&lt;investFlag&gt;0&lt;/investFlag&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime&gt;1533092315000&lt;/createTime&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime&gt;1533629648000&lt;/modifyTime&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;realNameTime&gt;1533092387000&lt;/realNameTime&gt;&lt;realNameTimeBegin/&gt;&lt;realNameTimeEnd/&gt;&lt;/regUserDetail&gt;&lt;points&gt;1000&lt;/points&gt;&lt;depositInfoCount&gt;0&lt;/depositInfoCount&gt;&lt;capitalAmount&gt;1260400.00&lt;/capitalAmount&gt;&lt;/params&gt;&lt;/ResponseEntity&gt;
+0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>paramunittest.logoutTest_0</td>
+    <td>logout</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c8',1)">Detail</a></td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td colspan='2' class='none'><div class='testcase'>test_login: logout</div></td>
+    <td colspan='7' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.1')" >
+        pass</a>
+
+    <div id='div_pt8.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt8.1: status: 200
+status: 200
+&lt;ResponseEntity&gt;&lt;resStatus&gt;1000&lt;/resStatus&gt;&lt;resMsg/&gt;&lt;params/&gt;&lt;/ResponseEntity&gt;
+1000
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>paramunittest.BidInfoListTest_0</td>
+    <td>bidInfoList</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c9',1)">Detail</a></td>
+</tr>
+
+<tr id='pt9.1' class='hiddenRow'>
+    <td colspan='2' class='none'><div class='testcase'>test_login: bidInfoList</div></td>
+    <td colspan='7' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt9.1')" >
+        pass</a>
+
+    <div id='div_pt9.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt9.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt9.1: status: 200
+status: 200
+&lt;ResponseEntity&gt;&lt;resStatus&gt;1000&lt;/resStatus&gt;&lt;resMsg&gt;&lt;currentPage&gt;1&lt;/currentPage&gt;&lt;startNum&gt;1&lt;/startNum&gt;&lt;endNum&gt;23&lt;/endNum&gt;&lt;pageSize&gt;2147483647&lt;/pageSize&gt;&lt;startRow&gt;0&lt;/startRow&gt;&lt;totalPages&gt;1&lt;/totalPages&gt;&lt;totalRows&gt;23&lt;/totalRows&gt;&lt;infiniteMode&gt;false&lt;/infiniteMode&gt;&lt;data&gt;&lt;data&gt;&lt;id&gt;274&lt;/id&gt;&lt;name&gt;m新手8222&lt;/name&gt;&lt;interestRate&gt;10.00&lt;/interestRate&gt;&lt;raiseRate&gt;0.00&lt;/raiseRate&gt;&lt;termValue&gt;1&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;0.0000&lt;/progress&gt;&lt;totalAmount&gt;100000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;100000.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;83.33&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;2&lt;/state&gt;&lt;productType&gt;1&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1534926505000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;2&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney&gt;56800&lt;/maxInvestMoney&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;275&lt;/id&gt;&lt;name&gt;m新手8223&lt;/name&gt;&lt;interestRate&gt;10.00&lt;/interestRate&gt;&lt;raiseRate&gt;0.00&lt;/raiseRate&gt;&lt;termValue&gt;1&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;0.1000&lt;/progress&gt;&lt;totalAmount&gt;100000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;99900.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;83.33&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;2&lt;/state&gt;&lt;productType&gt;1&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1534926540000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;2&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney&gt;56800&lt;/maxInvestMoney&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;174&lt;/id&gt;&lt;name&gt;m新手标8602&lt;/name&gt;&lt;interestRate&gt;10.00&lt;/interestRate&gt;&lt;raiseRate&gt;0.00&lt;/raiseRate&gt;&lt;termValue&gt;1&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;100.0000&lt;/progress&gt;&lt;totalAmount&gt;10000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;0.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;83.33&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;3&lt;/state&gt;&lt;productType&gt;1&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1533523921000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;2&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney&gt;56800&lt;/maxInvestMoney&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;291&lt;/id&gt;&lt;name&gt;1234567890&lt;/name&gt;&lt;interestRate&gt;11.00&lt;/interestRate&gt;&lt;raiseRate&gt;1.00&lt;/raiseRate&gt;&lt;termValue&gt;12&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;0.0000&lt;/progress&gt;&lt;totalAmount&gt;100000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;100000.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;1200.00&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;2&lt;/state&gt;&lt;productType&gt;2&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1535010511000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;2&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney/&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;208&lt;/id&gt;&lt;name&gt;mjfcg月月8102&lt;/name&gt;&lt;interestRate&gt;10.00&lt;/interestRate&gt;&lt;raiseRate&gt;0.00&lt;/raiseRate&gt;&lt;termValue&gt;12&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;100.0000&lt;/progress&gt;&lt;totalAmount&gt;10000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;0.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;1000.00&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;3&lt;/state&gt;&lt;productType&gt;2&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1533867015000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;2&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney/&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;217&lt;/id&gt;&lt;name&gt;mjfcg月月81402&lt;/name&gt;&lt;interestRate&gt;10.00&lt;/interestRate&gt;&lt;raiseRate&gt;0.00&lt;/raiseRate&gt;&lt;termValue&gt;12&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;100.0000&lt;/progress&gt;&lt;totalAmount&gt;10000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;0.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;1000.00&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;3&lt;/state&gt;&lt;productType&gt;2&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1534228540000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;2&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney/&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;230&lt;/id&gt;&lt;name&gt;mjfcg月月到期81403&lt;/name&gt;&lt;interestRate&gt;9.00&lt;/interestRate&gt;&lt;raiseRate&gt;1.00&lt;/raiseRate&gt;&lt;termValue&gt;12&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;0.0000&lt;/progress&gt;&lt;totalAmount&gt;10000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;10000.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;1000.00&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;2&lt;/state&gt;&lt;productType&gt;2&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1534237325000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;3&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney/&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;302&lt;/id&gt;&lt;name&gt;lixl18090502月月盈-到期&lt;/name&gt;&lt;interestRate&gt;10.00&lt;/interestRate&gt;&lt;raiseRate&gt;0.00&lt;/raiseRate&gt;&lt;termValue&gt;12&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;100.0000&lt;/progress&gt;&lt;totalAmount&gt;10000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;0.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;1000.00&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;3&lt;/state&gt;&lt;productType&gt;2&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1536132549000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;3&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney/&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;287&lt;/id&gt;&lt;name&gt;333&lt;/name&gt;&lt;interestRate&gt;0.00&lt;/interestRate&gt;&lt;raiseRate&gt;1.00&lt;/raiseRate&gt;&lt;termValue&gt;3&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;0.0000&lt;/progress&gt;&lt;totalAmount&gt;300000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;300000.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;25.00&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;2&lt;/state&gt;&lt;productType&gt;3&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1534750597000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;2&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney/&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;231&lt;/id&gt;&lt;name&gt;lixl18081402季季盈-仅使用红包&lt;/name&gt;&lt;interestRate&gt;10.00&lt;/interestRate&gt;&lt;raiseRate&gt;0.00&lt;/raiseRate&gt;&lt;termValue&gt;12&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;100.0000&lt;/progress&gt;&lt;totalAmount&gt;3000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;0.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;1000.00&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;3&lt;/allowCoupon&gt;&lt;state&gt;3&lt;/state&gt;&lt;productType&gt;3&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1534237439000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;2&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney/&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;232&lt;/id&gt;&lt;name&gt;lixl18081402季季盈-不支持卡券&lt;/name&gt;&lt;interestRate&gt;10.00&lt;/interestRate&gt;&lt;raiseRate&gt;0.00&lt;/raiseRate&gt;&lt;termValue&gt;12&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;100.0000&lt;/progress&gt;&lt;totalAmount&gt;3000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;0.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;1000.00&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;0&lt;/allowCoupon&gt;&lt;state&gt;3&lt;/state&gt;&lt;productType&gt;3&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1534237545000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;2&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney/&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;240&lt;/id&gt;&lt;name&gt;mjfcg年年81501&lt;/name&gt;&lt;interestRate&gt;8.50&lt;/interestRate&gt;&lt;raiseRate&gt;1.50&lt;/raiseRate&gt;&lt;termValue&gt;12&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;100.0000&lt;/progress&gt;&lt;totalAmount&gt;10000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;0.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;1000.00&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;3&lt;/state&gt;&lt;productType&gt;4&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1534314971000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;2&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney/&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;323&lt;/id&gt;&lt;name&gt;年年盈-按月091201&lt;/name&gt;&lt;interestRate&gt;5.00&lt;/interestRate&gt;&lt;raiseRate&gt;1.00&lt;/raiseRate&gt;&lt;termValue&gt;12&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;0.0000&lt;/progress&gt;&lt;totalAmount&gt;10000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;10000.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;600.00&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;2&lt;/state&gt;&lt;productType&gt;4&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1536720992000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;2&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney/&gt;&lt;/data&gt;&lt;data&gt;&lt;id&gt;324&lt;/id&gt;&lt;name&gt;年年盈-到期091202&lt;/name&gt;&lt;interestRate&gt;5.00&lt;/interestRate&gt;&lt;raiseRate&gt;2.00&lt;/raiseRate&gt;&lt;termValue&gt;12&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;progress&gt;0.0000&lt;/progress&gt;&lt;totalAmount&gt;10000.00&lt;/totalAmount&gt;&lt;residueAmount&gt;10000.00&lt;/residueAmount&gt;&lt;tenThousandIncome&gt;700.00&lt;/tenThousandIncome&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;state&gt;2&lt;/state&gt;&lt;productType&gt;4&lt;/productType&gt;&lt;type&gt;0&lt;/type&gt;&lt;startTime&gt;1536721048000&lt;/startTime&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;biddRepaymentWay&gt;3&lt;/biddRepaymentWay&gt;&lt;hasStarted&gt;true&lt;/hasStarted&gt;&lt;maxInvestMoney/&gt;&lt;/data&gt;&lt;/data&gt;&lt;/resMsg&gt;&lt;params&gt;&lt;commonFlag&gt;1&lt;/commonFlag&gt;&lt;gfbFlag&gt;0&lt;/gfbFlag&gt;&lt;/params&gt;&lt;/ResponseEntity&gt;
+1000
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>paramunittest.toInvestTest_0</td>
+    <td>bidInfoList</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c10',1)">Detail</a></td>
+</tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td colspan='2' class='none'><div class='testcase'>test_login: bidInfoList</div></td>
+    <td colspan='7' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.1')" >
+        pass</a>
+
+    <div id='div_pt10.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt10.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt10.1: status: 200
+status: 200
+&lt;ResponseEntity&gt;&lt;resStatus&gt;1000&lt;/resStatus&gt;&lt;resMsg/&gt;&lt;params&gt;&lt;jList&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;112&lt;/id&gt;&lt;acceptorUserId&gt;1140&lt;/acceptorUserId&gt;&lt;avtKey&gt;J-U7R9TOJHZZ1U&lt;/avtKey&gt;&lt;worth&gt;1.00&lt;/worth&gt;&lt;couponProductId/&gt;&lt;bidProductTypeRange&gt;2,3,4&lt;/bidProductTypeRange&gt;&lt;source/&gt;&lt;beginTime&gt;1525795200000&lt;/beginTime&gt;&lt;beginTimeBegin/&gt;&lt;beginTimeEnd/&gt;&lt;endTime&gt;1589039999000&lt;/endTime&gt;&lt;endTimeBegin/&gt;&lt;endTimeEnd/&gt;&lt;usedTime&gt;-62135798400000&lt;/usedTime&gt;&lt;usedTimeBegin/&gt;&lt;usedTimeEnd/&gt;&lt;createUserId/&gt;&lt;modifiedUserId/&gt;&lt;reason&gt;卡券赠送原因123&lt;/reason&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime/&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime/&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;ids/&gt;&lt;name&gt;激活卡券功能&lt;/name&gt;&lt;type&gt;0&lt;/type&gt;&lt;tel/&gt;&lt;hasDonationRecord/&gt;&lt;amountMin&gt;100.00&lt;/amountMin&gt;&lt;amountMax&gt;99999999.99&lt;/amountMax&gt;&lt;regUserId/&gt;&lt;/jList&gt;&lt;jList&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;115&lt;/id&gt;&lt;acceptorUserId&gt;1140&lt;/acceptorUserId&gt;&lt;avtKey&gt;J-T4VNO1ZRXC1G&lt;/avtKey&gt;&lt;worth&gt;0.50&lt;/worth&gt;&lt;couponProductId/&gt;&lt;bidProductTypeRange&gt;0,2,3,4&lt;/bidProductTypeRange&gt;&lt;source/&gt;&lt;beginTime&gt;1526572800000&lt;/beginTime&gt;&lt;beginTimeBegin/&gt;&lt;beginTimeEnd/&gt;&lt;endTime&gt;1652889599000&lt;/endTime&gt;&lt;endTimeBegin/&gt;&lt;endTimeEnd/&gt;&lt;usedTime&gt;-62135798400000&lt;/usedTime&gt;&lt;usedTimeBegin/&gt;&lt;usedTimeEnd/&gt;&lt;createUserId/&gt;&lt;modifiedUserId/&gt;&lt;reason&gt;卡券赠送原因123&lt;/reason&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime/&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime/&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;ids/&gt;&lt;name&gt;lixl加息券0.5&lt;/name&gt;&lt;type&gt;0&lt;/type&gt;&lt;tel/&gt;&lt;hasDonationRecord/&gt;&lt;amountMin&gt;100.00&lt;/amountMin&gt;&lt;amountMax&gt;99999999.99&lt;/amountMax&gt;&lt;regUserId/&gt;&lt;/jList&gt;&lt;jList&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;116&lt;/id&gt;&lt;acceptorUserId&gt;1140&lt;/acceptorUserId&gt;&lt;avtKey&gt;J-1JI4YZURWA1PS&lt;/avtKey&gt;&lt;worth&gt;0.40&lt;/worth&gt;&lt;couponProductId/&gt;&lt;bidProductTypeRange&gt;0,2,3,4&lt;/bidProductTypeRange&gt;&lt;source/&gt;&lt;beginTime&gt;1526572800000&lt;/beginTime&gt;&lt;beginTimeBegin/&gt;&lt;beginTimeEnd/&gt;&lt;endTime&gt;1652889599000&lt;/endTime&gt;&lt;endTimeBegin/&gt;&lt;endTimeEnd/&gt;&lt;usedTime&gt;-62135798400000&lt;/usedTime&gt;&lt;usedTimeBegin/&gt;&lt;usedTimeEnd/&gt;&lt;createUserId/&gt;&lt;modifiedUserId/&gt;&lt;reason&gt;卡券赠送原因123&lt;/reason&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime/&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime/&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;ids/&gt;&lt;name&gt;lixl加息券0.4&lt;/name&gt;&lt;type&gt;0&lt;/type&gt;&lt;tel/&gt;&lt;hasDonationRecord/&gt;&lt;amountMin&gt;100.00&lt;/amountMin&gt;&lt;amountMax&gt;99999999.99&lt;/amountMax&gt;&lt;regUserId/&gt;&lt;/jList&gt;&lt;investPersonSum&gt;0&lt;/investPersonSum&gt;&lt;bidInfo&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;230&lt;/id&gt;&lt;bidId/&gt;&lt;bidCode&gt;mjfcg月月到期81403&lt;/bidCode&gt;&lt;totalAmount&gt;10000.00&lt;/totalAmount&gt;&lt;loanUse&gt;1&lt;/loanUse&gt;&lt;residueAmount&gt;10000.00&lt;/residueAmount&gt;&lt;interestRate&gt;10.00&lt;/interestRate&gt;&lt;termValue&gt;12&lt;/termValue&gt;&lt;termUnit&gt;2&lt;/termUnit&gt;&lt;lendingTime&gt;-62135798400000&lt;/lendingTime&gt;&lt;lendTime/&gt;&lt;createTime&gt;1534237321000&lt;/createTime&gt;&lt;state&gt;2&lt;/state&gt;&lt;borrowerId&gt;4&lt;/borrowerId&gt;&lt;receiptUserId&gt;0&lt;/receiptUserId&gt;&lt;bidScheme&gt;1&lt;/bidScheme&gt;&lt;bidSchemeValue&gt;100&lt;/bidSchemeValue&gt;&lt;showPosition&gt;1,2&lt;/showPosition&gt;&lt;investPosition&gt;1,2&lt;/investPosition&gt;&lt;startTime&gt;1534237325000&lt;/startTime&gt;&lt;endTime&gt;1542877325000&lt;/endTime&gt;&lt;commissionRate&gt;0.0000&lt;/commissionRate&gt;&lt;serviceRate&gt;0.00000&lt;/serviceRate&gt;&lt;biddRepaymentWay&gt;3&lt;/biddRepaymentWay&gt;&lt;printImgUrl&gt;&lt;/printImgUrl&gt;&lt;imgUrl&gt;&lt;/imgUrl&gt;&lt;allowCoupon&gt;1&lt;/allowCoupon&gt;&lt;advanceServiceRate&gt;0.00&lt;/advanceServiceRate&gt;&lt;liquidatedDamagesRate&gt;0.00&lt;/liquidatedDamagesRate&gt;&lt;stepValue&gt;100&lt;/stepValue&gt;&lt;matchType&gt;0&lt;/matchType&gt;&lt;returnCapAmount&gt;0.00&lt;/returnCapAmount&gt;&lt;nextMatchTime/&gt;&lt;nextMatchDate&gt;1534237321000&lt;/nextMatchDate&gt;&lt;punishState&gt;0&lt;/punishState&gt;&lt;reserveInterest&gt;0&lt;/reserveInterest&gt;&lt;billNo&gt;&lt;/billNo&gt;&lt;repaymentSource&gt;&lt;/repaymentSource&gt;&lt;assureDescription&gt;&lt;/assureDescription&gt;&lt;projectDescription&gt;&lt;/projectDescription&gt;&lt;fundUse&gt;&lt;/fundUse&gt;&lt;withholdState&gt;2&lt;/withholdState&gt;&lt;recommendState&gt;1&lt;/recommendState&gt;&lt;givingPointState&gt;0&lt;/givingPointState&gt;&lt;bourseFlg&gt;0&lt;/bourseFlg&gt;&lt;assureType&gt;&lt;/assureType&gt;&lt;creditLevel&gt;&lt;/creditLevel&gt;&lt;legalFiles&gt;&lt;/legalFiles&gt;&lt;type&gt;0&lt;/type&gt;&lt;creditorDays&gt;0&lt;/creditorDays&gt;&lt;dealRepayDays&gt;0&lt;/dealRepayDays&gt;&lt;convertRateStart&gt;0.00&lt;/convertRateStart&gt;&lt;convertRateEnd&gt;100.00&lt;/convertRateEnd&gt;&lt;overflowRateStart&gt;0.00&lt;/overflowRateStart&gt;&lt;overflowRateEnd&gt;100.00&lt;/overflowRateEnd&gt;&lt;mostTransferCount&gt;0&lt;/mostTransferCount&gt;&lt;maturityRemind&gt;1&lt;/maturityRemind&gt;&lt;autidNote/&gt;&lt;creditorState&gt;0&lt;/creditorState&gt;&lt;transferRate&gt;0.00&lt;/transferRate&gt;&lt;transferDays&gt;0&lt;/transferDays&gt;&lt;advanceRepayState&gt;0&lt;/advanceRepayState&gt;&lt;returnCapDays&gt;0&lt;/returnCapDays&gt;&lt;returnCapWay&gt;1&lt;/returnCapWay&gt;&lt;bidProductId&gt;46&lt;/bidProductId&gt;&lt;productType&gt;2&lt;/productType&gt;&lt;productTypes/&gt;&lt;productName&gt;钱坤宝-月月盈-到期还本付息&lt;/productName&gt;&lt;productState/&gt;&lt;amountMin&gt;100&lt;/amountMin&gt;&lt;amountMax&gt;99999999&lt;/amountMax&gt;&lt;termValueMin&gt;1&lt;/termValueMin&gt;&lt;termValueMax&gt;36&lt;/termValueMax&gt;&lt;bidDeadline&gt;100&lt;/bidDeadline&gt;&lt;rateMin&gt;1.00&lt;/rateMin&gt;&lt;rateMax&gt;20.00&lt;/rateMax&gt;&lt;raiseRate&gt;1.00&lt;/raiseRate&gt;&lt;description&gt;更赚钱-月月盈&lt;/description&gt;&lt;contract&gt;1,2&lt;/contract&gt;&lt;modifyUserId/&gt;&lt;modifyTime/&gt;&lt;createUserId/&gt;&lt;isMatch/&gt;&lt;startTerm/&gt;&lt;endTerm/&gt;&lt;bidType/&gt;&lt;matchingMoney/&gt;&lt;borrowerName/&gt;&lt;interestAmount/&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;hasMatch/&gt;&lt;title&gt;mjfcg月月到期81403&lt;/title&gt;&lt;raiseFlag/&gt;&lt;modifyAble&gt;false&lt;/modifyAble&gt;&lt;resiDays&gt;0&lt;/resiDays&gt;&lt;ruleId&gt;84&lt;/ruleId&gt;&lt;sumRepay/&gt;&lt;termValueStr/&gt;&lt;matchingDaysStr/&gt;&lt;matchingDetailsStr/&gt;&lt;createTimeStr/&gt;&lt;lendingTimeStr/&gt;&lt;nextMatchDateStr/&gt;&lt;companyId&gt;0&lt;/companyId&gt;&lt;companyName/&gt;&lt;receiptUserName/&gt;&lt;/bidInfo&gt;&lt;millionIncome&gt;1000.00&lt;/millionIncome&gt;&lt;useableMoney&gt;99626867.17&lt;/useableMoney&gt;&lt;kList&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;235&lt;/id&gt;&lt;acceptorUserId&gt;1140&lt;/acceptorUserId&gt;&lt;avtKey&gt;K-T84LAWXURX43&lt;/avtKey&gt;&lt;worth&gt;500.00&lt;/worth&gt;&lt;couponProductId/&gt;&lt;bidProductTypeRange&gt;0,2,3,4&lt;/bidProductTypeRange&gt;&lt;source/&gt;&lt;beginTime&gt;1526572800000&lt;/beginTime&gt;&lt;beginTimeBegin/&gt;&lt;beginTimeEnd/&gt;&lt;endTime&gt;1652889599000&lt;/endTime&gt;&lt;endTimeBegin/&gt;&lt;endTimeEnd/&gt;&lt;usedTime&gt;-62135798400000&lt;/usedTime&gt;&lt;usedTimeBegin/&gt;&lt;usedTimeEnd/&gt;&lt;createUserId/&gt;&lt;modifiedUserId/&gt;&lt;reason&gt;卡券赠送原因123&lt;/reason&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime/&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime/&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;ids/&gt;&lt;name&gt;lixl投资红包500&lt;/name&gt;&lt;type&gt;1&lt;/type&gt;&lt;tel/&gt;&lt;hasDonationRecord/&gt;&lt;amountMin&gt;100.00&lt;/amountMin&gt;&lt;amountMax&gt;99999999.99&lt;/amountMax&gt;&lt;regUserId/&gt;&lt;/kList&gt;&lt;kList&gt;&lt;sortColumns/&gt;&lt;systemName/&gt;&lt;queryColumnId/&gt;&lt;id&gt;236&lt;/id&gt;&lt;acceptorUserId&gt;1140&lt;/acceptorUserId&gt;&lt;avtKey&gt;K-1HRMHO8SLG8J5&lt;/avtKey&gt;&lt;worth&gt;400.00&lt;/worth&gt;&lt;couponProductId/&gt;&lt;bidProductTypeRange&gt;0,2,3,4&lt;/bidProductTypeRange&gt;&lt;source/&gt;&lt;beginTime&gt;1526572800000&lt;/beginTime&gt;&lt;beginTimeBegin/&gt;&lt;beginTimeEnd/&gt;&lt;endTime&gt;1652889599000&lt;/endTime&gt;&lt;endTimeBegin/&gt;&lt;endTimeEnd/&gt;&lt;usedTime&gt;-62135798400000&lt;/usedTime&gt;&lt;usedTimeBegin/&gt;&lt;usedTimeEnd/&gt;&lt;createUserId/&gt;&lt;modifiedUserId/&gt;&lt;reason&gt;卡券赠送原因123&lt;/reason&gt;&lt;state&gt;1&lt;/state&gt;&lt;createTime/&gt;&lt;createTimeBegin/&gt;&lt;createTimeEnd/&gt;&lt;modifyTime/&gt;&lt;modifyTimeBegin/&gt;&lt;modifyTimeEnd/&gt;&lt;ids/&gt;&lt;name&gt;lixl投资红包400&lt;/name&gt;&lt;type&gt;1&lt;/type&gt;&lt;tel/&gt;&lt;hasDonationRecord/&gt;&lt;amountMin&gt;100.00&lt;/amountMin&gt;&lt;amountMax&gt;99999999.99&lt;/amountMax&gt;&lt;regUserId/&gt;&lt;/kList&gt;&lt;/params&gt;&lt;/ResponseEntity&gt;
+1000
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td colspan='2'>Total</td>
+    <td>10</td>
+    <td>10</td>
+    <td>0</td>
+    <td>0</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

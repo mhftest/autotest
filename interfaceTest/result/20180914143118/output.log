@@ -1,0 +1,4 @@
+2018-09-14 14:31:19,012 - root - INFO - ********TEST START********
+2018-09-14 14:31:19,023 - root - ERROR - 'ModuleImportFailure' object has no attribute 'case_name'
+2018-09-14 14:31:19,023 - root - INFO - *********TEST END*********
+2018-09-14 14:31:19,024 - root - INFO - Doesn't send report email to developer.
